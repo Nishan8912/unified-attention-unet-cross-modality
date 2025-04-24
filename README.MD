@@ -1,6 +1,41 @@
-# Tumor Segmentation with U-Net
+===============================================
+Multi-Modal Deep Learning for Tumor Segmentation
+-This repository contains code for tumor segmentation 
+tasks using a simplified U-Net architecture 
+implemented in PyTorch.
+===============================================
 
-This repository contains code for tumor segmentation tasks using a simplified U-Net architecture implemented in PyTorch.
+Team Members:
+- Nishan Rai
+- Pushparaj Dahal
+Team No: 03
+
+Dataset Information
+-----------------------------------------------------
+
+**1. BraTS 2021 Dataset (Brain MRI Tumor Segmentation)**:
+- Source: Kaggle
+- Link: https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1
+- Format: .nii.gz volumes with 4 modalities (T1, T1ce, T2, FLAIR)
+- Used for: Brain tumor segmentation
+
+**2. LIDC-IDRI Dataset (Lung CT Nodule Segmentation)**:
+- Source: Kaggle
+- Link: https://www.kaggle.com/datasets/zhangweiled/lidcidri
+- Format: Pre-sliced CT scans with 4 radiologist annotations per nodule
+- Used for: Lung nodule segmentation
+
+## Dataset Organization
+
+Download the datasets and organize as follows:
+
+├── datasets/
+│   ├── BraTS/
+│   │   └── [Extracted .nii.gz files]
+│   └── LIDC/
+│       └── [CT slices and segmentation masks]
+
+Update the paths in the notebook accordingly.
 
 ## Requirements
 
@@ -48,7 +83,12 @@ jupyter notebook tumor_seg.ipynb
 ## Notes
 
 - Ensure CUDA and GPU compatibility if using GPU acceleration.
-- Adjust hyperparameters and dataset paths as necessary for your data and task.
+- Adjust dataset paths as necessary for your data and task.
 
+## Submission Structure
 
-
+This project submission includes:
+- report.pdf: Final report
+- team.txt: Team member list
+- readme.md: This file
+- tumor_seg.ipynb: Code notebook
