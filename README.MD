@@ -7,7 +7,6 @@ implemented in PyTorch.
 Team Members:
 - Nishan Rai
 - Pushparaj Dahal
-Team No: 03
 
 Dataset Information
 -----------------------------------------------------
