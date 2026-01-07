@@ -1,13 +1,14 @@
-Multi-Modal Deep Learning for Tumor Segmentation
--This repository contains code for tumor segmentation 
-tasks using a simplified U-Net architecture 
-implemented in PyTorch.
+# Unified Attention U-Net for Cross-Modality Tumor Segmentation
+
+This repository contains code for tumor segmentation across **MRI (BraTS 2021)** and **CT (LIDC-IDRI)** datasets using a **unified Attention U-Net** implemented in PyTorch.
+
+The goal of this project is to investigate whether a **single model** can generalize across heterogeneous imaging modalities without requiring modality-specific networks or complex domain-adaptation pipelines.
+
 ===============================================
 
-Team Members:
+Authors:
 - Nishan Rai
 - Pushparaj Dahal
-Team No: 03
 
 Dataset Information
 -----------------------------------------------------
@@ -84,10 +85,6 @@ jupyter notebook tumor_seg.ipynb
 - Ensure CUDA and GPU compatibility if using GPU acceleration.
 - Adjust dataset paths as necessary for your data and task.
 
-## Submission Structure
-
-This project submission includes:
-- report.pdf: Final report
-- team.txt: Team member list
-- readme.md: This file
-- tumor_seg.ipynb: Code notebook
+## Citation
+- If you use this project in research or publications, please consider citing:
+> Rai & Dahal. A Unified Attention U-Net Framework for Cross-Modality Tumor Segmentation in MRI and CT (2025).
