@@ -1,4 +1,3 @@
-===============================================
 Multi-Modal Deep Learning for Tumor Segmentation
 -This repository contains code for tumor segmentation 
 tasks using a simplified U-Net architecture 
