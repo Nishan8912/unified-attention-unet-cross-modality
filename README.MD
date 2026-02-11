@@ -72,8 +72,7 @@ Optional args:
 ## Notes
 - GPU/CUDA is recommended for training speed.
 - `artifacts/` folders are kept for runtime outputs, but `.pth`/`.onnx` files are intentionally excluded from Git.
-- Share trained weights via release assets or external storage, then link them in this README.
-- If you publish results, document exact dataset splits and seeds.
+
 
 ## Citation
 If you use this project in research/publications, please cite:
