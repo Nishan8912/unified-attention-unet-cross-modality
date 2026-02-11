@@ -37,8 +37,8 @@ pip install numpy matplotlib albumentations nibabel pandas seaborn scikit-learn 
 ├── scripts/
 │   └── run_unified_training.py
 ├── artifacts/
-│   ├── checkpoints/          # .pth checkpoints
-│   └── exports/              # exported models (e.g., ONNX)
+│   ├── checkpoints/          # runtime .pth outputs (gitignored)
+│   └── exports/              # runtime exports (e.g., ONNX, gitignored)
 ├── assets/
 │   └── figures/              # architecture and flow images
 └── data/
@@ -71,7 +71,8 @@ Optional args:
 
 ## Notes
 - GPU/CUDA is recommended for training speed.
-- Keep large generated files in `artifacts/` rather than repo root.
+- `artifacts/` folders are kept for runtime outputs, but `.pth`/`.onnx` files are intentionally excluded from Git.
+- Share trained weights via release assets or external storage, then link them in this README.
 - If you publish results, document exact dataset splits and seeds.
 
 ## Citation

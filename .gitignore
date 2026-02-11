@@ -5,3 +5,7 @@ best_model.pth
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Training artifacts
+artifacts/checkpoints/*.pth
+artifacts/exports/*.onnx
