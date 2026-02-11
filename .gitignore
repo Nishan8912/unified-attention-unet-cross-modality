@@ -1,2 +1,7 @@
 Data/
 best_model.pth
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
