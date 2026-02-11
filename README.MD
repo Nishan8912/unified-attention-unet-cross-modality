@@ -1,90 +1,80 @@
 # Unified Attention U-Net for Cross-Modality Tumor Segmentation
 
-This repository contains code for tumor segmentation across **MRI (BraTS 2021)** and **CT (LIDC-IDRI)** datasets using a **unified Attention U-Net** implemented in PyTorch.
+This repository contains a modular PyTorch implementation for tumor segmentation across:
+- BraTS 2021 (brain MRI)
+- LIDC-IDRI (lung CT)
 
-The goal of this project is to investigate whether a **single model** can generalize across heterogeneous imaging modalities without requiring modality-specific networks or complex domain-adaptation pipelines.
+The project trains one unified Attention U-Net across both modalities.
 
-===============================================
-
-Authors:
+## Authors
 - Nishan Rai
 - Pushparaj Dahal
 
-Dataset Information
------------------------------------------------------
-
-**1. BraTS 2021 Dataset (Brain MRI Tumor Segmentation)**:
-- Source: Kaggle
-- Link: https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1
-- Format: .nii.gz volumes with 4 modalities (T1, T1ce, T2, FLAIR)
-- Used for: Brain tumor segmentation
-
-**2. LIDC-IDRI Dataset (Lung CT Nodule Segmentation)**:
-- Source: Kaggle
-- Link: https://www.kaggle.com/datasets/zhangweiled/lidcidri
-- Format: Pre-sliced CT scans with 4 radiologist annotations per nodule
-- Used for: Lung nodule segmentation
-
-## Dataset Organization
-
-Download the datasets and organize as follows:
-
-├── datasets/
-│   ├── BraTS/
-│   │   └── [Extracted .nii.gz files]
-│   └── LIDC/
-│       └── [CT slices and segmentation masks]
-
-Update the paths in the notebook accordingly.
+## Datasets
+- BraTS 2021: https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1
+- LIDC-IDRI slices: https://www.kaggle.com/datasets/zhangweiled/lidcidri
 
 ## Requirements
 
-Install the required Python packages using pip:
-
-```bash
-pip install torch torchvision numpy matplotlib segmentation-models-pytorch notebook
-```
-
-Alternatively, create and activate a conda environment:
+Recommended environment:
 
 ```bash
 conda create -n tumor_seg python=3.9
 conda activate tumor_seg
 conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
-pip install numpy matplotlib segmentation-models-pytorch notebook
+pip install numpy matplotlib albumentations nibabel pandas seaborn scikit-learn tqdm pillow
 ```
 
-## Key Dependencies
+## Repository Structure
 
-- **torch** (PyTorch)
-- **torchvision**
-- **segmentation-models-pytorch**
-- **numpy**
-- **matplotlib** (for visualization)
+```text
+.
+├── src/
+│   ├── data/                 # Datasets and transforms
+│   ├── models/               # Attention U-Net model code
+│   ├── training/             # Losses, samplers, training loops
+│   └── eval/                 # Evaluation metrics and plots
+├── scripts/
+│   └── run_unified_training.py
+├── artifacts/
+│   ├── checkpoints/          # .pth checkpoints
+│   └── exports/              # exported models (e.g., ONNX)
+├── assets/
+│   └── figures/              # architecture and flow images
+└── data/
+    └── samples/              # local sample/test artifacts
+```
 
-## Running the Notebook
+## Run Training
 
-1. Open the terminal and navigate to the directory containing the notebook (`tumor_seg.ipynb`).
-
-2. Launch Jupyter Notebook:
+Use explicit dataset paths (no hardcoded machine-specific paths):
 
 ```bash
-jupyter notebook tumor_seg.ipynb
+python3 scripts/run_unified_training.py \
+  --brats-root /path/to/BraTS2021_Training_Data \
+  --lidc-root /path/to/LIDC-IDRI-slices
 ```
 
-3. Run the notebook cells sequentially to train, evaluate, and visualize your segmentation model.
+Or with environment variables:
 
-## File Structure
+```bash
+export BRATS_ROOT=/path/to/BraTS2021_Training_Data
+export LIDC_ROOT=/path/to/LIDC-IDRI-slices
+python3 scripts/run_unified_training.py
+```
 
-- `tumor_seg.ipynb`: Main notebook containing model definition, training, and evaluation code.
-
-> **Important:** Make sure your dataset paths are correctly set inside the notebook.
+Optional args:
+- `--num-patients` (default: `200`)
+- `--seed` (default: `42`)
+- `--epochs` (default: `45`)
+- `--lr` (default: `1e-4`)
 
 ## Notes
-
-- Ensure CUDA and GPU compatibility if using GPU acceleration.
-- Adjust dataset paths as necessary for your data and task.
+- GPU/CUDA is recommended for training speed.
+- Keep large generated files in `artifacts/` rather than repo root.
+- If you publish results, document exact dataset splits and seeds.
 
 ## Citation
-- If you use this project in research or publications, please consider citing:
-> Rai & Dahal. A Unified Attention U-Net Framework for Cross-Modality Tumor Segmentation in MRI and CT (2025).
+If you use this project in research/publications, please cite:
+
+> Rai, N., & Dahal, P. R. (2026). *A Unified Attention U-Net Framework for Cross-Modality Tumor Segmentation in MRI and CT*. arXiv:2601.06187. https://doi.org/10.48550/arXiv.2601.06187
