@@ -63,12 +63,6 @@ export LIDC_ROOT=/path/to/LIDC-IDRI-slices
 python3 scripts/run_unified_training.py
 ```
 
-Optional args:
-- `--num-patients` (default: `200`)
-- `--seed` (default: `42`)
-- `--epochs` (default: `45`)
-- `--lr` (default: `1e-4`)
-
 ## Notes
 - GPU/CUDA is recommended for training speed.
 - `artifacts/` folders are kept for runtime outputs, but `.pth`/`.onnx` files are intentionally excluded from Git.
